@@ -44,14 +44,20 @@ To set up and run the program, please do the following.
    
        python loadMongo.py
        
-4. Run the server and connect to the webapp.
+## Usage
 
-   Run the following in your terminal
+To use the webapp, first run the following in your terminal
    
-       python app.py
+    python app.py
        
-   You should see output like
+You should see output like
    
-        * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
+    * Running on http://127.0.0.1:5000/ (Press CTRL+C to quit)
    
-   Now you can visit that link in your browser and use the app!
+Now you can visit that link in your browser and use the app!
+
+## Screenshots
+
+![Homepage](https://i.imgur.com/mZGoLkQ.png)
+
+![Browsing View](https://i.imgur.com/zoXPCLM.png)
