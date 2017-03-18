@@ -1,0 +1,361 @@
+<!doctype html>
+<html lang="en">
+{% block head %}
+<head>
+    <title>Poetry Explorer</title>
+
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='semantic.min.css') }}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='home.css') }}">
+    <script
+src="https://code.jquery.com/jquery-3.1.1.min.js"
+  integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+  crossorigin="anonymous">
+    </script>
+    <script src="{{ url_for('static', filename='semantic.min.js') }}"></script>
+</head>
+{% endblock %}
+<body class="site">
+    <div id="content">
+	<div class="ui grid">
+	    <div class="row">
+		<div class="left floated column">
+		    <div class="ui huge header">Poetry Explorer</div>
+		</div>
+	    </div>
+	    <div class="row">
+		<div class="one wide column"></div>
+		<div class="fourteen wide column">
+		    <form class="ui form" method="POST" action="/categories">
+			<div class="five fields">
+			    <div class="field">
+				<label>Events</label>
+				<select name="Events" multiple="" class="ui dropdown">
+				    <option value="">Choose Events to Browse for Poems By</option>
+				    <option value="The Troubles">The Troubles</option>
+				    <option value="Irish Revolution">Irish Revolution</option>
+				    <option value="Israeli-Palestinian Conflict">Israeli-Palestinian Conflict</option>
+				</select>				
+			    </div>
+			    <div class="field">
+				<label>Poetic Terms</label>
+				<div class="ui multiple selection dropdown">
+				    <input name="Poetic Terms" type="hidden">
+				    <i class="dropdown icon"></i>
+				    <div class="default text">Choose Poetic Terms to Browse for Poems By</div>
+				    <div class="ui menu">
+					<div class="header item" data-value="Verse Forms">Verse Forms</div>
+					<div class="item" data-value="Ballad">Ballad</div>
+					<div class="item" data-value="Haiku">Haiku</div>
+					<div class="item" data-value="Limerick">Limerick</div>
+					<div class="item" data-value="Sestina">Sestina</div>
+					<div class="item" data-value="Sonnet">Sonnet</div>
+					<div class="item" data-value="Villanelle">Villanelle</div>
+					<div class="item" data-value="Pantoum">Pantoum</div>
+					<div class="item" data-value="Ghazal">Ghazal</div>
+					<div class="header item" data-value="Stanza Forms">Stanza Forms</div>
+					<div class="item" data-value="Couplet">Couplet</div>
+					<div class="item" data-value="Ottava Rima">Ottava Rima</div>
+					<div class="item" data-value="Terza Rima">Terza Rima</div>
+					<div class="item" data-value="Rhymed Stanza">Rhymed Stanza</div>
+					<div class="item" data-value="Mixed">Mixed</div>
+					<div class="item" data-value="Tercet">Tercet</div>
+					<div class="item" data-value="Quatrain">Quatrain</div>
+					<div class="header item" data-value="Meters">Meters</div>
+					<div class="item" data-value="Free Verse">Free Verse</div>
+					<div class="item" data-value="Blank Verse">Blank Verse</div>
+					<div class="item" data-value="Syllabic">Syllabic</div>
+					<div class="item" data-value="Common Measure">Common Measure</div>
+					<div class="header item" data-value="Techniques">Techniques</div>
+					<div class="item" data-value="Epigraph">Epigraph</div>
+					<div class="item" data-value="Assonance">Assonance</div>
+					<div class="item" data-value="Consonance">Consonance</div>
+					<div class="item" data-value="Alliteration">Alliteration</div>
+					<div class="item" data-value="Allusion">Allusion</div>
+					<div class="item" data-value="Simile">Simile</div>
+					<div class="item" data-value="Metaphor">Metaphor</div>
+					<div class="item" data-value="Imagery">Imagery</div>
+					<div class="item" data-value="Refrain">Refrain</div>
+					<div class="item" data-value="Aphorism">Aphorism</div>
+					<div class="item" data-value="Persona">Persona</div>
+					<div class="item" data-value="Imagist">Imagist</div>
+					<div class="item" data-value="Confessional">Confessional</div>
+					<div class="item" data-value="Symbolist">Symbolist</div>
+					<div class="header item" data-value="Types/Modes">Types/Modes</div>
+					<div class="item" data-value="Ode">Ode</div>
+					<div class="item" data-value="Pastoral">Pastoral</div>
+					<div class="item" data-value="Aubade">Aubade</div>
+					<div class="item" data-value="Dramatic Monologue">Dramatic Monologue</div>
+					<div class="item" data-value="Elegy">Elegy</div>
+					<div class="item" data-value="Epistle">Epistle</div>
+					<div class="item" data-value="Epithalamion">Epithalamion</div>
+					<div class="item" data-value="Concrete or Pattern Poetry">Concrete or Pattern Poetry</div>
+					<div class="item" data-value="Epigram">Epigram</div>
+					<div class="item" data-value="Prose Poem">Prose Poem</div>
+					<div class="item" data-value="Series/Sequence">Series/Sequence</div>
+					<div class="item" data-value="Visual Poetry">Visual Poetry</div>
+					<div class="item" data-value="Ars Poetica">Ars Poetica</div>
+					<div class="item" data-value="Ekphrasis">Ekphrasis</div>
+					<div class="item" data-value="Epic">Epic</div>
+					<div class="item" data-value="Nursery Rhymes">Nursery Rhymes</div>
+				    </div>
+				</div>
+			    </div>
+			    <div class="field">
+				<label>Topics</label>
+				<div class="ui multiple selection dropdown">
+				    <input name="Subjects" type="hidden">
+				    <i class="dropdown icon"></i>
+				    <div class="default text">Choose Topics to Browse for Poems By</div>
+				    <div class="ui menu">
+					<div class="header item" data-value="Love|">Love</div>
+					<div class="item" data-value="Desire|">Desire</div>
+					<div class="item" data-value="Heartache & Loss|">Heartache & Loss</div>
+					<div class="item" data-value="Realistic & Complicated|">Realistic & Complicated Love</div>
+					<div class="item" data-value="Romantic Love|">Romantic Love</div>
+					<div class="item" data-value="Classic Love|">Classic Love</div>
+					<div class="item" data-value="Infatuation & Crushes|">Infatuation & Crushes</div>
+					<div class="item" data-value="Unrequited Love|">Unrequited Love</div>
+					<div class="item" data-value="Break-ups & Vexed Love|">Break-ups & Vexed Love</div>
+					<div class="item" data-value="First Love|">First Love</div>
+					<div class="header item" data-value="Nature|">Nature</div>
+					<div class="item" data-value="Winter|">Winter</div>
+					<div class="item" data-value="Spring|">Spring</div>
+					<div class="item" data-value="Summer|">Summer</div>
+					<div class="item" data-value="Fall|">Fall</div>
+					<div class="item" data-value="Sunset|">Sunset</div>					
+					<div class="item" data-value="Landscapes & Pastorals|">Landscapes & Pastorals</div>
+					<div class="item" data-value="Trees & Flowers|">Trees & Flowers</div>
+					<div class="item" data-value="Stars, Planets, Heavens|">Stars, Planets, Heavens</div>
+					<div class="item" data-value="Seas, Rivers, & Streams|">Seas, Rivers, & Streams</div>
+					<div class="item" data-value="Animals|">Animals</div>
+					<div class="header item" data-value="Weather|">Weather</div>
+					<div class="item" data-value="Rain/Storm|">Rain/Storm</div>
+					<div class="item" data-value="Snow|">Snow</div>
+					<div class="item" data-value="Fog|">Fog</div>
+					<div class="header item" data-value="Social Commentaries|">Social Commentaries</div>
+					<div class="item" data-value="History & Politics|">History & Politics</div>
+					<div class="item" data-value="War & Conflict|">War & Conflict</div>
+					<div class="item" data-value="Crime & Punishment|">Crime & Punishment</div>
+					<div class="item" data-value="Money & Economics|">Money & Economics</div>
+					<div class="item" data-value="Race & Ethnicity|">Race & Ethnicity</div>
+					<div class="item" data-value="Gender & Sexuality|">Gender & Sexuality</div>
+					<div class="item" data-value="Class|">Class</div>
+					<div class="item" data-value="Popular Culture|">Popular Culture</div>
+					<div class="item" data-value="Cities & Urban Life|">Cities & Urban Life</div>
+					<div class="item" data-value="Town & Country Life|">Town & Country Life</div>
+					<div class="header item" data-value="Religion|">Religion</div>
+					<div class="item" data-value="Faith & Doubt|">Faith & Doubt</div>
+					<div class="item" data-value="God & the Divine|">God & the Divine</div>
+					<div class="item" data-value="Judaism|">Judaism</div>
+					<div class="item" data-value="Buddhism|">Buddhism</div>
+					<div class="item" data-value="Islam|">Islam</div>
+					<div class="item" data-value="Christianity|">Christianity</div>
+					<div class="item" data-value="Other Religions|">Other Religions</div>
+					<div class="item" data-value="The Spiritual|">The Spiritual</div>
+					<div class="header item" data-value="Living|">Living</div>
+					<div class="item" data-value="Birth & Birthdays|">Birth & Birthdays</div>
+					<div class="item" data-value="Infancy|">Infancy</div>
+					<div class="item" data-value="Youth|">Youth</div>
+					<div class="item" data-value="Coming of Age|">Coming of Age</div>
+					<div class="item" data-value="Marriage & Companionship|">Marriage & Companionship</div>
+					<div class="item" data-value="Parenthood|">Parenthood</div>
+					<div class="item" data-value="Separation & Divorce|">Separation & Divorce</div>
+					<div class="item" data-value="Midlife|">Midlife</div>
+					<div class="item" data-value="Growing Old|">Growing Old</div>
+					<div class="item" data-value="Health & Illness|">Health & Illness</div>
+					<div class="item" data-value="Disappointment & Failure|">Disappointment & Failure</div>
+					<div class="item" data-value="Death|">Death</div>
+					<div class="item" data-value="Sorrow & Grieving|">Sorrow & Grieving</div>
+					<div class="item" data-value="Life Choices|">Life Choices</div>
+					<div class="item" data-value="The Body|">The Body</div>
+					<div class="item" data-value="The Mind|">The Mind</div>
+					<div class="item" data-value="Time & Brevity|">Time & Brevity</div>
+					<div class="header item" data-value="Relationships|">Relationships</div>
+					<div class="item" data-value="Men & Women|">Men & Women</div>
+					<div class="item" data-value="Friends & Enemies|">Friends & Enemies</div>
+					<div class="item" data-value="Gay, Lesbian, Queer|">Gay, Lesbian, Queer</div>
+					<div class="item" data-value="Home Life|">Home Life</div>
+					<div class="item" data-value="Family & Ancestors|">Family & Ancestors</div>
+					<div class="item" data-value="Pets|">Pets</div>
+					<div class="header item" data-value="Activities|">Activities</div>
+					<div class="item" data-value="School & Learning|">School & Learning</div>
+					<div class="item" data-value="Jobs & Working|">Jobs & Working</div>
+					<div class="item" data-value="Travels & Journeys|">Travels & Journeys</div>
+					<div class="item" data-value="Sports & Outdoor Activities|">Sports & Outdoor Activities</div>
+					<div class="item" data-value="Gardening|">Gardening</div>
+					<div class="item" data-value="Eating & Drinking|">Eating & Drinking</div>
+					<div class="item" data-value="Indoor Activities|">Indoor Activities</div>
+					<div class="header item" data-value="Arts & Sciences|">Arts & Sciences</div>
+					<div class="item" data-value="Philosophy|">Philosophy</div>
+					<div class="item" data-value="Sciences|">Sciences</div>
+					<div class="item" data-value="Reading & Books|">Reading & Books</div>
+					<div class="item" data-value="Poetry & Poets|">Poetry & Poets</div>
+					<div class="item" data-value="Humor & Satire|">Humor & Satire</div>
+					<div class="item" data-value="Music|">Music</div>
+					<div class="item" data-value="Theater & Dance|">Theater & Dance</div>
+					<div class="item" data-value="Painting & Sculpture|">Painting & Sculpture</div>
+					<div class="item" data-value="Architecture & Design|">Architecture & Design</div>
+					<div class="item" data-value="Photography & Film|">Photography & Film</div>
+					<div class="item" data-value="Language & Linguistics|">Language & Linguistics</div>
+					<div class="header item" data-value="Mythology & Folklore|">Mythology & Folklore</div>
+					<div class="item" data-value="Ghosts & the Supernatural|">Ghosts & the Supernatural</div>
+					<div class="item" data-value="Horror|">Horror</div>
+					<div class="item" data-value="Heroes & Patriotism|">Heroes & Patriotism</div>
+					<div class="item" data-value="Greek & Roman Mythology|">Greek & Roman Mythology</div>
+					<div class="item" data-value="Fairy-tales & Legends|">Fairy-tales & Legends</div>
+				    </div>
+				</div>
+			    </div>
+			    <div class="field">
+				<label>Occasions</label>
+				<select name="Occasions" multiple="" class="ui dropdown">
+				    <option value="">Choose Occasions to Browse for Poems By</option>
+				    <option value="Anniversary">Anniversary</option>
+				    <option value="Birth">Birth</option>
+				    <option value="Birthdays">Birthdays</option>
+				    <option value="Engagement">Engagement</option>
+				    <option value="Farewells & Good Luck">Farewells & Good Luck</option>
+				    <option value="Funerals">Funerals</option>
+				    <option value="Get Well & Recovery">Get Well & Recovery</option>
+				    <option value="Graduation">Graduation</option>
+				    <option value="Gratitude & Apologies">Gratitude & Apologies</option>
+				    <option value="Toasts & Celebrations">Toasts & Celebrations</option>
+				    <option value="Weddings">Weddings</option>
+				</select>
+			    </div>
+			    <div class="field">
+				<label>Holidays</label>
+				<select name="Holidays" multiple="" class="ui dropdown">
+				    <option value="">Choose Holidays to Browse for Poems By</option>
+				    <option value="Christmas">Christmas</option>
+				    <option value="Cinco de Mayo">Cinco de Mayo</option>
+				    <option value="Easter">Easter</option>
+				    <option value="Father's Day">Father's Day</option>
+				    <option value="Halloween">Halloween</option>
+				    <option value="Hanukah">Hanukah</option>
+				    <option value="Independence Day">Independence Day</option>
+				    <option value="Kwanzaa">Kwanzaa</option>
+				    <option value="Labor Day">Labor Day</option>
+				    <option value="Memorial Day">Memorial Day</option>
+				    <option value="Mother's Day">Mother's Day</option>
+				    <option value="New Year">New Year</option>
+				    <option value="Passover">Passover</option>
+				    <option value="Ramadan">Ramadan</option>
+				    <option value="Rosh Hashanah">Rosh Hashanah</option>
+				    <option value="September 11th">September 11th</option>
+				    <option value="St. Patrick's Day">St. Patrick's Day</option>
+				    <option value="Thanksgiving">Thanksgiving</option>
+				    <option value="Valentine's Day">Valentine's Day</option>
+				    <option value="Yom Kippur">Yom Kippur</option>
+				</select>
+			    </div>
+			</div>
+			<div class="three fields">
+			    <div class="field">
+				<label>Identity</label>
+				<select name="Identity" multiple="" class="ui dropdown">
+				    <option value="">Choose Identity to Browse for Poems By</option>
+				    <option value="African American">African American</option>
+				    <option value="Arab American">Arab American</option>
+				    <option value="Native American">Native American</option>
+				    <option value="Latino/Latina">Latino/Latina</option>
+				    <option value="LGBTQ">LGBTQ</option>
+				</select>
+			    </div>
+			    <div class="field">
+				<label>School/Period</label>
+				<select name="School/Period" multiple="" class="ui dropdown">
+				    <option value="">Choose School/Period to Browse for Poems By</option>
+				    <option value="Augustan">Augustan</option>
+				    <option value="Beat">Beat</option>
+				    <option value="Black Arts Movement">Black Arts Movement</option>
+				    <option value="Black Mountain">Black Mountain</option>
+				    <option value="Confessional">Confessional</option>
+				    <option value="Fugitive">Fugitive</option>
+				    <option value="Flarf">Flarf</option>
+				    <option value="Georgian">Georgian</option>
+				    <option value="Harlem Renaissance">Harlem Renaissance</option>
+				    <option value="Imagist">Imagist</option>
+				    <option value="Language Poetry">Language Poetry</option>
+				    <option value="Middle English">Middle English</option>
+				    <option value="Modern">Modern</option>
+				    <option value="New Formalism">New Formalism</option>
+				    <option value="New York School">New York School</option>
+				    <option value="New York School (2nd Generation)">New York School (2nd Generation)</option>
+				    <option value="Objectivist">Objectivist</option>
+				    <option value="Renaissance">Renaissance</option>
+				    <option value="Romantic">Romantic</option>
+				    <option value="Victorian">Victorian</option>
+				</select>
+			    </div>
+			    <div class="field">
+				<label>Region</label>
+				<select name="Region" multiple="" class="ui dropdown">
+				    <option value="">Choose Region to Browse for Poems By</option>
+				    <option value="Africa"><em>Africa</em></option>
+				    <option value="Argentina">Argentina</option>
+				    <option value="Asia, East">Asia, East</option>
+				    <option value="Asia, South">Asia, South</option>
+				    <option value="Asia, Southeast">Asia, Southeast</option>
+				    <option value="Australia">Australia</option>
+				    <option value="Benin">Benin</option>
+				    <option value="Canada">Canada</option>
+				    <option value="Caribbean">Caribbean</option>
+				    <option value="China">China</option>
+				    <option value="Colombia">Colombia</option>
+				    <option calue="Cuba">Cuba</option>
+				    <option value="Eastern Europe">Eastern Europe</option>
+				    <option value="England">England</option>
+				    <option value="France">France</option>
+				    <option value="Germany">Germany</option>
+				    <option value="Greece">Greece</option>
+				    <option value="Ireland & Northern Ireland">Ireland & Northern Ireland</option>
+				    <option value="Israel">Israel</option>
+				    <option value="Italy">Italy</option>
+				    <option value="India">India</option>
+				    <option value="Latin America">Latin America</option>
+				    <option value="Mexico">Mexico</option>
+				    <option value="Middle East">Middle East</option>
+				    <option value="Nigeria">Nigeria</option>
+				    <option value="Pacific Islands">Pacific Islands</option>
+				    <option value="Pakistan">Pakistan</option>
+				    <option value="Philippines">Philippines</option>
+				    <option value="Poland">Poland</option>
+				    <option value="Russia">Russia</option>
+				    <option value="Scandinavia">Scandinavia</option>
+				    <option value="Scotland">Scotland</option>
+				    <option value="Spain">Spain</option>
+				    <option value="U.S., Mid-Atlantic">U.S., Mid-Atlantic</option>
+				    <option value="U.S., Midwestern">U.S., Midwestern</option>
+				    <option value="U.S., New England">U.S., New England</option>
+				    <option value="U.S., Northwestern">U.S., Northwestern</option>
+				    <option value="U.S., Southern">U.S., Southern</option>
+				    <option value="U.S., Southwestern">U.S., Southwestern</option>
+				    <option value="U.S., Western">U.S., Western</option>
+				    <option value="Wales">Wales</option>
+				</select>
+			    </div>
+			</div>
+			<input type="submit" value="Submit" class="ui right floated button" tabindex="0"></input>
+		    </form>
+		</div>
+		<div class="one wide column"></div>
+		<!-- Here should go our ui multiple dropdown -->
+	    </div>
+	    <div class="row">
+		<div class="four wide column"></div>
+		<div class="eight wide column">
+		    {% block content %}{% endblock %}
+		</div>
+		<div class="four wide column"></div>
+	    </div>
+	</div>	
+    </div>
+    <footer class="ui inverted right aligned segment" style="margin=0">
+	a project made with love by Farhan and Hari
+    </footer>
+    <script>
+     $('.dropdown').dropdown();
+    </script>
+</body>
+</html>

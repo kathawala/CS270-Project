@@ -1,0 +1,28 @@
+{% extends "base.jinja2" %}
+{% block content %}
+    {% if poem %}
+        <div class="ui externally celled grid">
+	    <div class="row">
+		<div class="three wide column"></div>
+		<div class="ten wide column">
+		    <div class="ui item">
+			<div class="content">
+			    <h2 class="header">{{ poem.title }}</h2>
+			    <div class="meta" style="color: #5D5D5D">by {{ poem.author }}</div>
+			    <div class="description">
+				{{ poem.html|safe }}
+			    </div>
+			    <div class="extra" style="color: #5D5D5D">Categories</div>
+			    <div class="extra ui horizontal list" style="color: #5D5D5D">
+				{% for c in poem.categories %}
+				   <div class="item">{{ c }}</div>
+				{% endfor %}
+			    </div>
+			</div>
+		    </div>
+		</div>
+		<div class="three wide column"></div>
+	    </div>
+	</div>
+     {% endif %}
+{% endblock %}
